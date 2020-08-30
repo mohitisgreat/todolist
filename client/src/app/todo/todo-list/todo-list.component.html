@@ -1,0 +1,30 @@
+<mat-action-list *ngIf="!isLoading">
+  <mat-list-item 
+      *ngFor="let todo of todos" 
+      [routerLink]="['/', 'todo', todo._id]" 
+      [ngClass]="todoService.getItemNgClass(todo.dueDate)">
+    <mat-icon matListIcon>folder</mat-icon>
+    <h4 matLine>{{todo.title}}</h4>
+    <p matLine class="demo-2"> {{todo.dueDate | date}} </p>
+    <span style="width: 100%"></span>
+    <button mat-icon-button (click)="$event.stopPropagation(); onDelete(todo)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-action-list>
+
+<div class="loading-indicator" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<p *ngIf="!isLoading && count == 0">
+  Congratulations you've done all your works! Now you are free to hibernate or enjoy!
+</p>
+
+<mat-paginator 
+  [pageSizeOptions]="[5, 10, 15, 20]"
+  [pageIndex]="0"
+  [length]="count"
+  (page)="reload($event)"
+  [ngClass]="{ 'hidden': isLoading }">
+</mat-paginator>

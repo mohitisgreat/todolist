@@ -1,0 +1,27 @@
+<form ngForm (submit)="onSubmit()" #editForm="ngForm" [ngClass]="{ hidden: isLoading}">
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput ngModel placeholder="Title" name="title" required>
+    <mat-error>Are you in your sence? This is a required field!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Description</mat-label>
+    <textarea matInput ngModel name="description" placeholder="Description of your todo(Optional)" rows="6"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Due Date</mat-label>
+    <input matInput ngModel name="dueDate" [matDatepicker]="myDatepicker" placeholder="MM/DD/YYYY" required>
+    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #myDatepicker></mat-datepicker>
+    <mat-error>You are ordered not to leave it empty!</mat-error>
+  </mat-form-field>
+  
+  <button mat-flat-button color="primary" type="submit" [disabled]="editForm.invalid">Submit</button>
+</form>
+
+<div class="loading-indicator" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>

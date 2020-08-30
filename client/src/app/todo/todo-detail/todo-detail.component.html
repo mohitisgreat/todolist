@@ -1,0 +1,27 @@
+<div *ngIf="!isLoading">
+  <h4 class="mat-h4">{{ todo.dueDate | date }}</h4>
+
+  <p>
+    <button 
+      mat-flat-button 
+      color="primary" 
+      [routerLink]="['/', 'edit' ]" 
+      [queryParams]='{ id: todo._id }'>Edit</button>
+    
+    <button 
+      mat-flat-button 
+      color="danger" 
+      style="margin-left: 15px" 
+      (click)="onDelete()">Delete</button>
+  </p>
+
+  <p 
+    style="white-space: pre-wrap;" 
+    [ngClass]="todoService.getItemNgClass(todo.dueDate)">
+    {{ todo.description }}
+  </p>
+</div>
+
+<div class="loading-indicator" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
