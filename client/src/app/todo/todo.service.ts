@@ -52,9 +52,11 @@ export class TodoService {
     return this.httpClient.get(`${TodoUrl}/${id}`)
       .pipe(
         map((value: any) => {
-          return value.result as TodoModel;
+          console.log(value);
+          return value as TodoModel;
         }),
         map((value: TodoModel) => {
+          console.log(value)
           value.dueDate = new Date(value.dueDate);
           return value;
         })
