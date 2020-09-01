@@ -8,7 +8,7 @@ import { TodoService } from '../todo.service';
 
 @Component({
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
   isLoading = true;
@@ -22,7 +22,8 @@ export class TodoListComponent implements OnInit {
     navService: NavService,
     public todoService: TodoService,
     private snackbar: MatSnackBar,
-    private dialog: MatDialog) {
+    private dialog: MatDialog
+  ) {
     navService.navTitle.next('All your work you need to do');
   }
 
@@ -41,11 +42,12 @@ export class TodoListComponent implements OnInit {
     this.todoService
       .fetchTodoItems(page, pageSize)
       .subscribe(
-        (todos: { message: string, todos: TodoModel[], count: number }) => {
+        (todos: { message: string; todos: TodoModel[]; count: number }) => {
           this.todos = todos.todos;
           this.isLoading = false;
           this.count = todos.count;
-        });
+        }
+      );
   }
 
   showDeleteMessage() {
@@ -54,12 +56,10 @@ export class TodoListComponent implements OnInit {
 
   deleteItem(itemId: string) {
     this.isLoading = true;
-    this.todoService
-      .deleteItemById(itemId)
-      .subscribe(result => {
-        this.fetch(this.page, this.pp);
-        this.showDeleteMessage();
-      });
+    this.todoService.deleteItemById(itemId).subscribe((result) => {
+      this.fetch(this.page, this.pp);
+      this.showDeleteMessage();
+    });
   }
 
   onDelete(item: TodoModel) {

@@ -18,7 +18,7 @@ import {
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatToolbarModule
+  MatToolbarModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -66,7 +66,6 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
   ],
   entryComponents: [DeleteConfirmDialogComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

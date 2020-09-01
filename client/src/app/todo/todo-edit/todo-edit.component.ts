@@ -9,7 +9,7 @@ import { TodoService } from '../todo.service';
 
 @Component({
   templateUrl: './todo-edit.component.html',
-  styleUrls: ['./todo-edit.component.scss']
+  styleUrls: ['./todo-edit.component.scss'],
 })
 export class TodoEditComponent {
   mode: 'create' | 'edit' = undefined;
@@ -19,10 +19,12 @@ export class TodoEditComponent {
   @ViewChild('editForm') editForm: NgForm;
 
   constructor(
-    private todoService: TodoService, route: ActivatedRoute,
-    private router: Router, navService: NavService,
-    private snackbar: MatSnackBar) {
-
+    private todoService: TodoService,
+    route: ActivatedRoute,
+    private router: Router,
+    navService: NavService,
+    private snackbar: MatSnackBar
+  ) {
     const mode = route.snapshot.url[0].path;
     switch (mode) {
       case 'create':
@@ -48,12 +50,12 @@ export class TodoEditComponent {
   populateEditForm() {
     this.isLoading = true;
 
-    this.todoService.fetchTodoItem(this.id).subscribe(value => {
+    this.todoService.fetchTodoItem(this.id).subscribe((value) => {
       this.isLoading = false;
       this.editForm.setValue({
         title: value.title,
         description: value.description,
-        dueDate: value.dueDate
+        dueDate: value.dueDate,
       });
     });
   }
@@ -71,22 +73,23 @@ export class TodoEditComponent {
       title: this.editForm.value.title,
       description: this.editForm.value.description,
       dueDate: this.editForm.value.dueDate,
-      isCompleted: false
+      isCompleted: false,
     };
 
     if (this.isCreate()) {
       this.editForm.reset();
 
-      this.todoService
-        .addTodoItem(item)
-        .subscribe(() => {
-          this.snackbar.open(
-            'Your task is successfully added to your todo list!', '',
-            { duration: 2000 });
-        });
-    } else {  // is edit
+      this.todoService.addTodoItem(item).subscribe(() => {
+        this.snackbar.open(
+          'Your task is successfully added to your todo list!',
+          '',
+          { duration: 2000 }
+        );
+      });
+    } else {
+      // is edit
       this.isLoading = true;
-      this.todoService.editItemById(this.id, item).subscribe(value => {
+      this.todoService.editItemById(this.id, item).subscribe((value) => {
         this.isLoading = false;
         this.router.navigate(['/']);
       });

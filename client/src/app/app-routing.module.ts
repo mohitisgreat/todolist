@@ -8,9 +8,8 @@ const routes: Routes = [
   { path: '', component: TodoListComponent },
   { path: 'create', component: TodoEditComponent },
   { path: 'edit', component: TodoEditComponent },
-  { path: 'todo/:id', component: TodoDetailComponent }
+  { path: 'todo/:id', component: TodoDetailComponent },
 ];
 
 @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

@@ -9,17 +9,20 @@ import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todo-detail',
-  templateUrl: './todo-detail.component.html'
+  templateUrl: './todo-detail.component.html',
 })
 export class TodoDetailComponent implements OnInit {
   constructor(
-    route: ActivatedRoute, public todoService: TodoService,
-    private dialog: MatDialog, private router: Router,
-    navService: NavService) {
+    route: ActivatedRoute,
+    public todoService: TodoService,
+    private dialog: MatDialog,
+    private router: Router,
+    navService: NavService
+  ) {
     navService.navTitle.next('Loading...');
     todoService
       .fetchTodoItem(route.snapshot.params.id as string)
-      .subscribe(item => {
+      .subscribe((item) => {
         this.todo = item;
         this.isLoading = false;
         navService.navTitle.next(item.title);
@@ -29,7 +32,7 @@ export class TodoDetailComponent implements OnInit {
   todo: TodoModel;
   isLoading = true;
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   onDelete() {
     this.dialog
@@ -45,5 +48,5 @@ export class TodoDetailComponent implements OnInit {
       });
   }
 
-  onEdit() { }
+  onEdit() {}
 }

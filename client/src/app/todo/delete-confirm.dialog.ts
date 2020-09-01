@@ -7,10 +7,10 @@ import { MatDialogRef } from '@angular/material';
     <p>Are you sure want to remove this todo?</p>
     <button mat-button (click)="onYes()">Yes</button>
     <button mat-button (click)="onNo()">No</button>
-  `
+  `,
 })
 export class DeleteConfirmDialogComponent {
-  constructor(private dialogRef: MatDialogRef<DeleteConfirmDialogComponent>) { }
+  constructor(private dialogRef: MatDialogRef<DeleteConfirmDialogComponent>) {}
 
   onYes() {
     this.dialogRef.close('yes');

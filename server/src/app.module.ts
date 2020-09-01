@@ -6,7 +6,7 @@ import { TodoModule } from './todo/todo.module';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/todo-list'),
-    TodoModule
-  ]
+    TodoModule,
+  ],
 })
-export class AppModule { }
+export class AppModule {}
