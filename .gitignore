@@ -1,19 +1,22 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
-/out-tsc
+client/dist
+client/tmp
+client/out-tsc
+
+server/dist
+server/tmp
+server/out-tsc
 
 # dependencies
 /node_modules
 /client/node_modules
-/client/backend
 /server/node_modules
 
 # profiling files
-chrome-profiler-events.json
-speed-measure-plugin.json
+*/chrome-profiler-events.json
+*/speed-measure-plugin.json
 
 # IDEs and editors
 /.idea
@@ -33,14 +36,22 @@ speed-measure-plugin.json
 .history/*
 
 # misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+client/.sass-cache
+client/connect.lock
+client/coverage
+client/libpeerconnection.log
+client/npm-debug.log
+client/yarn-error.log
+client/testem.log
+client/typings
+
+server/connect.lock
+server/coverage
+server/libpeerconnection.log
+server/npm-debug.log
+server/yarn-error.log
+server/testem.log
+server/typings
 
 # System Files
 .DS_Store
