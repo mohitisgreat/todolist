@@ -85,6 +85,9 @@ export class TodoEditComponent {
           '',
           { duration: 2000 }
         );
+
+        // Navigate to home when you are done creating your todo item
+        this.router.navigate(['/']);
       });
     } else {
       // is edit
