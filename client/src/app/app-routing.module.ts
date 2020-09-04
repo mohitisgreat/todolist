@@ -11,5 +11,8 @@ const routes: Routes = [
   { path: 'todo/:id', component: TodoDetailComponent },
 ];
 
-@NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
 export class AppRoutingModule {}
