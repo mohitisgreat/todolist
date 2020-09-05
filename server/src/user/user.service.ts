@@ -27,12 +27,23 @@ export class UserService {
       firstName,
       lastName,
       email,
+
+      /**
+       * !!WARNING!!: Don't store password directly into the database,
+       * use encrypted stuff for storing password!!!!!
+       */
       password,
     });
 
     try {
       const result = await newUser.save();
-      return result;
+
+      // Don't wanna return the password;
+      return {
+        firstName: result.firstName,
+        lastName: result.lastName,
+        email: result.email,
+      };
     } catch (e) {
       throw new InternalServerErrorException('Signup failed');
     }
@@ -44,6 +55,7 @@ export class UserService {
     }
 
     try {
+      // TODO: improve the login method a little bit.
       const user = await this.UserModel.findOne({ email, password });
       return {
         firstName: user.firstName,

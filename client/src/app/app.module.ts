@@ -30,6 +30,10 @@ import { DeleteConfirmDialogComponent } from './todo/delete-confirm.dialog';
 import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
 import { TodoEditComponent } from './todo/todo-edit/todo-edit.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthService } from './auth/auth.service';
+import { TodoService } from './todo/todo.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
     TodoEditComponent,
     TodoListComponent,
     DeleteConfirmDialogComponent,
+    SignupComponent,
+    LoginComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -65,7 +71,7 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
     MatListModule,
   ],
   entryComponents: [DeleteConfirmDialogComponent],
-  providers: [],
+  providers: [AuthService, TodoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
