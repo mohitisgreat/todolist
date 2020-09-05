@@ -3,7 +3,7 @@
       *ngFor="let todo of todos" 
       [routerLink]="['/', 'todo', todo._id]" 
       [ngClass]="todoService.getItemNgClass(todo.dueDate)">
-    <mat-icon matListIcon>folder</mat-icon>
+    <!-- <mat-icon matListIcon>folder</mat-icon> -->
     <h4 matLine>{{todo.title}}</h4>
     <p matLine class="demo-2"> {{todo.dueDate | date}} </p>
     <span style="width: 100%"></span>
