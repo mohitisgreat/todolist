@@ -1,7 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
@@ -51,6 +51,8 @@ import { TodoService } from './todo/todo.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
+
     LayoutModule,
     HttpClientModule,
     MatDialogModule,
